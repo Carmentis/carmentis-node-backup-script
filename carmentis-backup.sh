@@ -32,7 +32,8 @@ cd "$CARMENTIS_NODE_FOLDER" || exit
 timestamp=$(date +"%Y%m%d_%H%M%S")
 ./scripts/carmentis.sh stop && \
   tar -C "$CARMENTIS_NODE_FOLDER" -cf - .carmentis/data | lz4 > "$CURRENT_DIR/output/carmentis_$timestamp.tar.lz4" && \
-  ./scripts/carmentis.sh start:themis
+  ./scripts/carmentis.sh start:themis && \
+  echo "Backup created successfully in $CURRENT_DIR/output/carmentis_$timestamp.tar.lz4"
 
 
 if [ $? -eq 0 ]; then
